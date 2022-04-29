@@ -47,7 +47,7 @@ import io.reactivex.rxjava3.core.ObservableOnSubscribe;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import no.nordicsemi.android.mesh.espressif.EspColorUtils;
 
-public class EspAppApiForJS implements IEspAppApiForJS {
+public class EspAppApiForJS implements IEspAppApiForJS {  // 用于与前端交互的api
     private static final boolean DEBUG = true;
 
     private final EspLog mLog = new EspLog(getClass());

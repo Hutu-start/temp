@@ -8,6 +8,9 @@ import org.json.JSONObject;
 import java.lang.ref.WeakReference;
 import java.util.Locale;
 
+/**
+ * 与前端交互的方法
+ */
 public class EspJSApiForApp implements IEspJSApiForApp {
     private final WeakReference<EspMainActivity> mActivity;
 
@@ -15,6 +18,7 @@ public class EspJSApiForApp implements IEspJSApiForApp {
         mActivity = new WeakReference<>(activity);
     }
 
+    // 将数据发送到前端 在前端的回调里使用
     private void evaluateJavascript(String method, String param) {
         EspMainActivity activity = mActivity.get();
         if (activity != null) {

@@ -17,10 +17,10 @@ public class MeshApp extends MultiDexApplication {
     private HashMap<String, Object> mCacheMap;
 
     @Override
-    public void onCreate() {
+    public void onCreate() {  // Application类的初始化
         super.onCreate();
 
-        mCacheMap = new HashMap<>();
+        mCacheMap = new HashMap<>(); // 新建cache
 
         instance = this;
 
@@ -32,12 +32,13 @@ public class MeshApp extends MultiDexApplication {
         return instance;
     }
 
+/**                  opt cache的方法                             */
+
     public void putCache(String key, Object value) {
         synchronized (mCacheLock) {
             mCacheMap.put(key, value);
         }
     }
-
     /**
      * Save an object in app
      *

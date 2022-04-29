@@ -16,7 +16,9 @@
     <WebView
         android:id="@+id/webView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-280dp" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/testBtn1"

@@ -25,7 +25,7 @@ import java.util.Objects;
 
 public class EspMainActivity extends BaseActivity {
     private static final String APP_API_NAME = "EspBleMesh";
-    private static final String WEB_URL = "file:///android_asset/index.html";
+    private static final String WEB_URL = "file:///android_asset/index.html"; //webView的文件地址  也就是前端项目打包后的文件地址 app上看到的页面
 
     private static final int REQUEST_PERMISSION = 0xf000;
     private static final int REQUEST_AUDIO_RECORD_PERMISSION = 0xf001;
@@ -41,6 +41,9 @@ public class EspMainActivity extends BaseActivity {
     private EspJSApiForApp mJSApi;
     private EspAppApiForJS mAppApi;
 
+    /**
+     * 蓝牙/定位变化时 触发的方法  向mJSApi发送信息
+     */
     private final PhoneStateReceiver mReceiver = new PhoneStateReceiver() {
         @Override
         public void onPhoneStateChange() {
@@ -58,6 +61,13 @@ public class EspMainActivity extends BaseActivity {
         }
     };
 
+    /**             各个生命周期阶段所执行的方法                          */
+
+    /**
+     * ui组件初始化时 初始化前端文件 初始化前后台交互方法
+     *
+     * @param savedInstanceState
+     */
     @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +79,7 @@ public class EspMainActivity extends BaseActivity {
         webSettings.setJavaScriptEnabled(true);
         webSettings.setTextZoom(100);
 
-        mJSApi = new EspJSApiForApp(this);
+        mJSApi = new EspJSApiForApp(this); // 加载
         mBinding.webView.loadUrl(WEB_URL);
         mAppApi = new EspAppApiForJS(this);
         mBinding.webView.addJavascriptInterface(mAppApi, APP_API_NAME);
