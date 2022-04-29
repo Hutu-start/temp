@@ -1,0 +1,4 @@
+// 用于配置项目的子模块 每个模块都相当于一个小的项目
+include ':esp-blemesh'
+include ':app'
+include ':mesh'
